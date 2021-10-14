@@ -1,0 +1,14 @@
+.col-6 {
+  margin-bottom: 30px;
+  margin-right: 0px;
+  padding: 0px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.card {
+  width: 80%;
+  align-content: center;
+  align-items: center;
+  display: inline-block;
+}

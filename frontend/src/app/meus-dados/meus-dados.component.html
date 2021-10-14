@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="danger" viewBox="0 0 16 16">
+    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+  </symbol>
+</svg>
+<div id="spinner" *ngIf="isLoading">
+  <div style="text-align:center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+</div>
+<div class="text-center" id="container" *ngIf="!isLoading">
+  <main class="form-signin" *ngIf="user">
+    <div class="center form-signin">
+      <div class="row" *ngIf="error">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#danger"/></svg>
+          <div>
+            <p class="red-text text-darken-4">{{error}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form #editUserForm="ngForm" (ngSubmit)="onSubmit(editUserForm)" *ngIf="!isLoading">
+      <h3 class="h3 mb-3 fw-normal">Meus Dados</h3>
+      <h5 class="mb-3 fw-normal">Entre em contato com o administrador do sistema caso necessite alterar alguma das informações abaixo.</h5>
+      <div class="form-group">
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="email" value={{user.email}}>
+          <label for="email">Email</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="nome" name="nome" [(ngModel)]="user.name" value={{user.name}}>
+          <label for="nome">Nome</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="sobrenome" name="sobrenome" [(ngModel)]="user.surname" value={{user.surname}}>
+          <label for="sobrenome">Sobrenome</label>
+        </div>
+        <div class="form-group form-floating">
+          <select readonly class="form-control" id="setor" [(ngModel)]="user.sector" name="setor">
+            <option>{{user.sector}}</option>
+          </select>
+          <label for="setor">Setor</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="data_de_nascimento" value={{user.date_of_birth}}>
+          <label for="data_de_nascimento">Data de Nascimento</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="data_de_admissao" value={{user.admission_date}}>
+          <label for="data_de_admissao">Data de Admissão</label>
+        </div>
+        <div class="form-group form-floating">
+          <select readonly class="form-control" id="gênero" [(ngModel)]="user.gender" name="gênero">
+            <option>{{user.gender}}</option>
+          </select>
+          <label for="setor">Gênero</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" readonly class="form-control" id="cpf" value={{user.cpf}}>
+          <label for="cpf">CPF</label>
+        </div>
+        <div class="form-group form-floating">
+          <select readonly class="form-control" id="cargo" [(ngModel)]="user.job_title" name="cargo">
+            <option>{{user.job_title}}</option>
+          </select>
+          <label for="cargo">Cargo</label>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>

@@ -1,0 +1,21 @@
+<div class="p-3 pb-md-4 mx-auto text-center">
+  <h2 class="fw-normal">Notícias</h2>
+</div>
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-6" *ngFor="let noticia of noticias; let i = index">
+      <div class="card mb-4 rounded-3 shadow-sm" routerLinkActive="active" (click)="onClickNoticia(noticia.category, noticia.address)">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">{{noticia.title}}</h4>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>{{noticia.subtitle}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
