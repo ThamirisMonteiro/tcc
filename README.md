@@ -5,3 +5,5 @@ backend - golang
 frontend - angular
 <br>
 comunicação - API
+<br>
+banco de dados - postgreSQL
