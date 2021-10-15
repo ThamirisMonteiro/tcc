@@ -30,6 +30,8 @@ import { EditarNoticiaComponent } from './admin/admin-noticias/editar-noticia/ed
 import { NoticiasComponent } from './noticias/noticias.component';
 import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.component";
+import { CriarGaleriaComponent } from './admin/admin-galerias/criar-galeria/criar-galeria.component';
+import { EditarGaleriaComponent } from './admin/admin-galerias/editar-galeria/editar-galeria.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.comp
     EditarNoticiaComponent,
     NoticiasComponent,
     NoticiaComponent,
-    AdminGaleriasComponent
+    AdminGaleriasComponent,
+    CriarGaleriaComponent,
+    EditarGaleriaComponent
   ],
     imports: [
       BrowserModule,

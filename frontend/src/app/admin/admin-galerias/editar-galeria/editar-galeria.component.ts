@@ -1,44 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
-import {Noticia} from "../../../models/noticia.model";
-import {NoticiasService} from "../noticias.service";
+import {Galeria} from "../../../models/galeria.model";
+import {GaleriasService} from "../galerias.service";
 
 @Component({
-  selector: 'app-editar-noticia',
-  templateUrl: './editar-noticia.component.html',
-  styleUrls: ['./editar-noticia.component.css']
+  selector: 'app-editar-galeria',
+  templateUrl: './editar-galeria.component.html',
+  styleUrls: ['./editar-galeria.component.css']
 })
-export class EditarNoticiaComponent implements OnInit {
+export class EditarGaleriaComponent implements OnInit {
   isLoading = false
   error: string = ""
-  noticia: Noticia = new Noticia('', '', '', '', '', '', '',  false)
-  address: string
+  galeria: Galeria = new Galeria('', '', '', '', '', '',  false)
+  name: string
   url: any;
   msg = "";
   changedImage: any;
 
-  constructor(private router: Router, private noticiaService: NoticiasService) {
-    this.address = this.router.getCurrentNavigation()?.extras?.state?.address
-    if (this.address == undefined) {
-      this.router.navigate(["admin-noticias"]).then()
+  constructor(private router: Router, private galeriasService: GaleriasService) {
+    this.name = this.router.getCurrentNavigation()?.extras?.state?.name
+    if (this.name == undefined) {
+      this.router.navigate(["admin-galerias"]).then()
     }
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
-    this.noticiaService.findNoticiaByAddress(userData._token, this.address).subscribe((data: Noticia ) => {
-      this.noticia = data;
+    this.galeriasService.findGaleriaByName(userData._token, this.name).subscribe((data: Galeria ) => {
+      this.galeria = data;
     })
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(editNoticiaForm: NgForm) {
-    if (!editNoticiaForm.valid) {
+  onSubmit(editGaleriaForm: NgForm) {
+    if (!editGaleriaForm.valid) {
       return
     }
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
-    this.noticiaService.update(this.noticia,userData._token).subscribe()
-    this.router.navigate(['admin-noticias']).then()
+    this.galeriasService.update(this.galeria,userData._token).subscribe()
+    this.router.navigate(['admin-galerias']).then()
   }
 
   selectFile(event: any) {
@@ -61,7 +61,7 @@ export class EditarNoticiaComponent implements OnInit {
     reader.onload = (_event) => {
       this.msg = "";
       this.changedImage = reader.result
-      this.noticia.image = this.changedImage
+      this.galeria.cover_image = this.changedImage
     }
   }
 

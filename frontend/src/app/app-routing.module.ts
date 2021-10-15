@@ -18,6 +18,8 @@ import {EditarNoticiaComponent} from "./admin/admin-noticias/editar-noticia/edit
 import {NoticiasComponent} from "./noticias/noticias.component";
 import {NoticiaComponent} from "./noticias/noticia/noticia.component";
 import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.component";
+import {CriarGaleriaComponent} from "./admin/admin-galerias/criar-galeria/criar-galeria.component";
+import {EditarGaleriaComponent} from "./admin/admin-galerias/editar-galeria/editar-galeria.component";
 
 const appRoutes: Routes = [
   // auth
@@ -34,11 +36,12 @@ const appRoutes: Routes = [
 
   // cadastrar
   {path: 'criar-usuario', component: CriarUsuarioComponent},
-  // {path: 'criar-galeria', component: CriarGaleriaComponent},
+  {path: 'criar-galeria', component: CriarGaleriaComponent},
   {path: 'criar-noticia', component: CriarNoticiaComponent},
 
   // editar
   {path: 'editar-usuario', component: EditarUsuarioComponent},
+  {path: 'editar-galeria', component: EditarGaleriaComponent},
   {path: 'editar-noticia', component: EditarNoticiaComponent},
 
   // main pages

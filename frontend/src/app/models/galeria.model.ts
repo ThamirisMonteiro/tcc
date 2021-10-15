@@ -5,6 +5,7 @@ export class Galeria {
         public description: string,
         public date: string,
         public category: string,
+        public cover_image: string,
         public active: boolean) {}
 }
 
