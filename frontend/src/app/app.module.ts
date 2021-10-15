@@ -32,6 +32,8 @@ import { NoticiaComponent } from './noticias/noticia/noticia.component';
 import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.component";
 import { CriarGaleriaComponent } from './admin/admin-galerias/criar-galeria/criar-galeria.component';
 import { EditarGaleriaComponent } from './admin/admin-galerias/editar-galeria/editar-galeria.component';
+import { GaleriaComponent } from './galerias/galeria/galeria.component';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { EditarGaleriaComponent } from './admin/admin-galerias/editar-galeria/ed
     NoticiaComponent,
     AdminGaleriasComponent,
     CriarGaleriaComponent,
-    EditarGaleriaComponent
+    EditarGaleriaComponent,
+    GaleriaComponent
   ],
     imports: [
       BrowserModule,
@@ -69,7 +72,8 @@ import { EditarGaleriaComponent } from './admin/admin-galerias/editar-galeria/ed
       FormsModule,
       HttpClientModule,
       BrowserAnimationsModule,
-      NgbModule
+      NgbModule,
+      NgImageSliderModule
     ],
   providers: [],
   bootstrap: [AppComponent]

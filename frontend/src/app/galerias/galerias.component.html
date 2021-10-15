@@ -1,1 +1,23 @@
-<p>galerias works!</p>
+<div class="p-3 pb-md-4 mx-auto text-center">
+  <h2 class="fw-normal">Galerias</h2>
+</div>
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-6" *ngFor="let galeria of galerias; let i = index">
+      <div class="card mb-4 rounded-3 shadow-sm" routerLinkActive="active" (click)="onClickGaleria(galeria.name)">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">{{galeria.name}}</h4>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled mt-3 mb-4">
+              <img *ngIf='alreadyHasImage(galeria.cover_image)' style="width: 50%; height: 50%" src='{{galeria.cover_image}}'>
+            <li>{{galeria.date}}</li>
+            <li>{{galeria.description}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

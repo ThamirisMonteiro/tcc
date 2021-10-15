@@ -1,0 +1,30 @@
+.banner {
+  width: 100%;
+  height: 194px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  position: absolute;
+}
+
+.titulo {
+  margin-top: 20px;
+  position: relative;
+}
+
+.classification {
+  margin-bottom: 20px;
+}
+
+#innerImage {
+  float: right;
+  width:500px;
+  height:500px;
+  margin-left:15px;
+}
+
+.conteudo {
+  margin-bottom: 10%;
+}

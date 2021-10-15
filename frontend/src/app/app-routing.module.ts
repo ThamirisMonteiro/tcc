@@ -20,6 +20,7 @@ import {NoticiaComponent} from "./noticias/noticia/noticia.component";
 import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.component";
 import {CriarGaleriaComponent} from "./admin/admin-galerias/criar-galeria/criar-galeria.component";
 import {EditarGaleriaComponent} from "./admin/admin-galerias/editar-galeria/editar-galeria.component";
+import {GaleriaComponent} from "./galerias/galeria/galeria.component";
 
 const appRoutes: Routes = [
   // auth
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
   {path: 'galerias', component: GaleriasComponent},
   {path: 'meus-dados', component: MeusDadosComponent},
   {path: 'noticias/:categoria/:address', component: NoticiaComponent},
+  {path: 'galerias/:name', component: GaleriaComponent},
 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
