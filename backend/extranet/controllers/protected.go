@@ -284,6 +284,7 @@ func (e *Env) GetAllGalerias(c *gin.Context) {
 	var givenGaleria models.ReturnGaleria
 	for _, galeria := range galerias {
 		givenGaleria.ID = galeria.ID
+		givenGaleria.Name = galeria.Name
 		givenGaleria.Description = galeria.Description
 		givenGaleria.Date = galeria.Date
 		givenGaleria.Category = galeria.Category

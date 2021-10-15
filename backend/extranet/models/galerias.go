@@ -11,7 +11,7 @@ type Galeria struct {
 	Description string   `json:"description"`
 	Date        string   `json:"date"`
 	Category    string   `json:"category"`
-	CoverImage  string   `json:"cover-image"`
+	CoverImage  string   `json:"cover_image"`
 	Active      bool     `json:"active"`
 }
 

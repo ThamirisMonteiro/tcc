@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efb31c1a-e301-4ce5-9363-ed4b9191ccca" name="Changes" comment="" />
+    <list default="true" id="efb31c1a-e301-4ce5-9363-ed4b9191ccca" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-galerias/criar-galeria/criar-galeria.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-galerias/criar-galeria/criar-galeria.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-galerias/criar-galeria/criar-galeria.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/protected.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/protected.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/galerias.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/galerias.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-galerias/admin-galerias.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-galerias/admin-galerias.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/models/galeria.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/models/galeria.model.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +62,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
@@ -167,5 +179,16 @@
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/controllers/protected.go</url>
+          <line>317</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
