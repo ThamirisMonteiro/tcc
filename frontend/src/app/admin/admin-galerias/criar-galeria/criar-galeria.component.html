@@ -57,6 +57,10 @@
             <img *ngIf='alreadyHasImage(galeria.cover_image)' style="width: 50%; height: 50%" src='{{galeria.cover_image}}'>
           </ng-template>
         </div>
+        <div style="text-align:center">
+          <label for="givenFoto">Selecione as fotos:</label><br>
+          <input required type="file" id="givenFoto" ngModel name="givenFoto" (change)="selectFotos($event)" multiple="multiple">
+        </div>
       </div>
       <br>
       <button [disabled]="!createGaleriaForm.valid" class="btn btn-dark" type="submit">Cadastrar Galeria</button>

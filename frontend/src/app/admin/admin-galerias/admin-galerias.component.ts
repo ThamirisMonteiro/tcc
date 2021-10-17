@@ -21,7 +21,6 @@ export class AdminGaleriasComponent implements OnInit {
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
     this.galeriaService.findAll(userData._token).subscribe((data) => {
       this.galerias = data;
-      console.log(data)
     })
     if (this.router.getCurrentNavigation() != null) {
       this.isSuccess = this.router.getCurrentNavigation()?.extras?.state?.isSuccess

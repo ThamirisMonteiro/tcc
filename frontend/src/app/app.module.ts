@@ -63,7 +63,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     AdminGaleriasComponent,
     CriarGaleriaComponent,
     EditarGaleriaComponent,
-    GaleriaComponent
+    GaleriaComponent,
   ],
     imports: [
       BrowserModule,

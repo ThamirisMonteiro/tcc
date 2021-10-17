@@ -9,7 +9,7 @@
     O que achou?
   </div>
   <div class="conteudo">
-<!--    <p class="col">Total de Fotos: {{ .qty || '0' }}</p>-->
+    <p class="col">Total de Fotos: {{ imgCollection.length || '0' }}</p>
     <ng-image-slider [images]="imgCollection" #nav></ng-image-slider>
   </div>
 </div>
