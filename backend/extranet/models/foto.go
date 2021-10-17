@@ -27,3 +27,7 @@ type UpdateFotoPayload struct {
 type PayloadImage struct {
 	Image string `json:"image"`
 }
+
+type InativarFoto struct {
+	IDs []string `json:"fotos_ids"`
+}

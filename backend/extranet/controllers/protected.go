@@ -474,3 +474,31 @@ func (e *Env) GetFotosByGaleria(c *gin.Context) {
 	c.JSON(200, givenFotos)
 	return
 }
+
+func (e *Env) InativarFotos(c *gin.Context) {
+	var givenFotosIDs models.InativarFoto
+	var foto models.Foto
+	err := c.ShouldBindJSON(&givenFotosIDs)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	for _, givenFotoID := range givenFotosIDs.IDs {
+		foto.ID = id.ID(givenFotoID)
+		_, err = e.DB.Model(&foto).
+			WherePK().
+			Set("active = false").
+			Update()
+		if err != nil {
+			c.JSON(401, gin.H{
+				"msg": "invalid input",
+			})
+			c.Abort()
+			return
+		}
+	}
+}

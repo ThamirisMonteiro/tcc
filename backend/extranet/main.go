@@ -74,6 +74,7 @@ func setupRouter(env controllers.Env) *gin.Engine {
 			// fotos
 			protected.POST("/uploadfoto", env.UploadFoto)
 			protected.POST("/fotosbygaleria", env.GetFotosByGaleria)
+			protected.PUT("/inativarfotos", env.InativarFotos)
 		}
 	}
 	return r
