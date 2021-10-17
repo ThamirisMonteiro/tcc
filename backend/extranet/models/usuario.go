@@ -10,7 +10,7 @@ var ErrEmailAlreadyExists = errors.New("email is already registered")
 var ErrUserAlreadyExists = errors.New("user is already registered")
 
 type User struct {
-	tableName     struct{} `pg:"extranet.users"`
+	tableName     struct{} `pg:"extranet.usuarios"`
 	Email         string   `json:"email"`
 	Password      string   `json:"password"`
 	ID            id.ID    `json:"id"`

@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// ************ USERS ************ //
+// ************ USUÁRIOS ************ //
 
 func (e *Env) GetUserByEmail(c *gin.Context) {
 	var user models.User
@@ -392,5 +392,85 @@ func (e *Env) GetGaleriaByName(c *gin.Context) {
 		return
 	}
 	c.JSON(200, galeria)
+	return
+}
+
+// ************ FOTOS ************ //
+
+func (e *Env) UploadFoto(c *gin.Context) {
+	var foto models.Foto
+	err := c.ShouldBindJSON(&foto)
+	if err != nil ||
+		foto.Image == "" ||
+		foto.Galeria == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	foto.Active = true
+	foto.ID = id.New()
+
+	err = e.CreateFotoRecord(foto)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"msg": err.Error(),
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(200, gin.H{"msg": "foto uploaded successfully"})
+}
+
+func (e *Env) CreateFotoRecord(givenFoto models.Foto) error {
+	_, err := e.DB.Model(&givenFoto).Insert()
+	if err != nil {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint \"users_email_uindex\"") {
+			return models.ErrEmailAlreadyExists
+		}
+		return err
+	}
+	return nil
+}
+
+func (e *Env) GetFotosByGaleria(c *gin.Context) {
+	var galeriaName models.PayloadName
+	err := c.ShouldBindJSON(&galeriaName)
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": err,
+		})
+		c.Abort()
+		return
+	}
+
+	var fotos []models.Foto
+	err = e.DB.Model(&fotos).
+		Where("galeria = ?", galeriaName.Name).
+		Where("active = true").
+		Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "fotos not found",
+		})
+		c.Abort()
+		return
+	}
+
+	var givenFotos []models.ReturnFoto
+	var givenFoto models.ReturnFoto
+	for _, foto := range fotos {
+		givenFoto.ID = foto.ID
+		givenFoto.Image = foto.Image
+		givenFoto.Galeria = foto.Galeria
+		givenFoto.Active = foto.Active
+		givenFotos = append(givenFotos, givenFoto)
+	}
+
+	c.JSON(200, givenFotos)
 	return
 }

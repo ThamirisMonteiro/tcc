@@ -4,36 +4,26 @@ import (
 	"extranet/core/id"
 )
 
-type Galeria struct {
-	tableName   struct{} `pg:"extranet.galerias"`
-	ID          id.ID    `json:"id"`
-	Name        string   `json:"name"`
-	Description string   `json:"description"`
-	Date        string   `json:"date"`
-	Category    string   `json:"category"`
-	CoverImage  string   `json:"cover_image"`
-	Active      bool     `json:"active"`
+type Foto struct {
+	tableName struct{} `pg:"extranet.fotos"`
+	ID        id.ID    `json:"id"`
+	Image     string   `json:"image"`
+	Galeria   string   `json:"galeria"`
+	Active    bool     `json:"active"`
 }
 
-type ReturnGaleria struct {
-	ID          id.ID  `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Date        string `json:"date"`
-	Category    string `json:"category"`
-	CoverImage  string `json:"cover_image"`
-	Active      bool   `json:"active"`
+type ReturnFoto struct {
+	ID      id.ID  `json:"id"`
+	Image   string `json:"image"`
+	Galeria string `json:"galeria"`
+	Active  bool   `json:"active"`
 }
 
-type UpdateGaleriaPayload struct {
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Date        string `json:"date"`
-	Category    string `json:"category"`
-	CoverImage  string `json:"cover_image"`
-	Active      bool   `json:"active"`
+type UpdateFotoPayload struct {
+	Image  string `json:"image"`
+	Active bool   `json:"active"`
 }
 
-type PayloadName struct {
-	Name string `json:"name"`
+type PayloadImage struct {
+	Image string `json:"image"`
 }
