@@ -11,20 +11,22 @@ export class FotosService {
   fotosUrl: string;
   fotoByImage: string;
   uploadFotoURL: string;
-  fotosbygaleria: string;
+  fotosByGaleria: string;
+  inativarFotosUrl: string;
 
   constructor(private http: HttpClient) {
     this.fotosUrl = "http://localhost:8080/api/protected/fotos";
     this.fotoByImage = "http://localhost:8080/api/protected/fotobyimage";
     this.uploadFotoURL = "http://localhost:8080/api/protected/uploadfoto";
-    this.fotosbygaleria = "http://localhost:8080/api/protected/fotosbygaleria";
+    this.fotosByGaleria = "http://localhost:8080/api/protected/fotosbygaleria";
+    this.inativarFotosUrl = "http://localhost:8080/api/protected/inativarfotos";
   }
 
   public findAllFotosByGaleria(token: String, name: String): Observable<Foto[]> {
     const httpOptions = {
       headers: new HttpHeaders().set("Authorization", "Bearer " + token)
     };
-    return this.http.post<Foto[]>(this.fotosbygaleria, {name: name}, httpOptions);
+    return this.http.post<Foto[]>(this.fotosByGaleria, {name: name}, httpOptions);
   }
 
   uploadFoto(image: string, galeria: string, token: string) {
@@ -44,5 +46,13 @@ export class FotosService {
           }
           return throwError(errorMessage)
         }))
+  }
+
+  public inativarFotos(fotos: Foto[], token: String): Observable<Object> {
+    const httpOptions = {
+      headers: new HttpHeaders().set("Authorization", "Bearer " + token)
+    };
+    let ids = fotos.map(({ id }) => id)
+    return this.http.put(this.inativarFotosUrl, {fotos_ids: ids}, httpOptions)
   }
 }

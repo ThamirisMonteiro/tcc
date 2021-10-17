@@ -32,3 +32,29 @@ textarea {
   height:100%;
   width:100%;
 }
+
+#thumbeditar {
+  width:200px;
+  height:200px;
+  margin: 10px;
+}
+
+#excluir {
+  position: absolute;
+  top: 13%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#containerFotos {
+  position: relative;
+  width: 100%;
+}

@@ -18,7 +18,6 @@ export class GaleriasComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
   }
 

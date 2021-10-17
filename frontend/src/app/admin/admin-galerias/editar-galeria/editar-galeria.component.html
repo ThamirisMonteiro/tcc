@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <form #createGaleriaForm="ngForm" (ngSubmit)="onSubmit(createGaleriaForm)" *ngIf="!isLoading">
+    <form #editGaleriaForm="ngForm" (ngSubmit)="onSubmit(editGaleriaForm)" *ngIf="!isLoading">
       <h3 class="h3 mb-3 fw-normal">Editar Galeria</h3>
       <h5 class="mb-3 fw-normal">Altere os campos abaixo.</h5>
       <div class="form-group">
@@ -42,7 +42,7 @@
           <input class="form-control" id="date" name="date" ngModel placeholder="date" required type="text" [(ngModel)]="galeria.date" value={{galeria.date}}>
           <label for="date">Data</label>
         </div>
-        <div class="form-group form-floating">
+        <div class="form-floating">
           <select class="form-control" id="category" ngModel name="category" [(ngModel)]="galeria.category">
             <option>{{galeria.category}}</option>
             <option>Eventos</option>
@@ -51,15 +51,25 @@
         </div>
         <div style="text-align:center">
           <label for="givenImage">Selecione uma imagem de capa:</label><br>
-          <input required type="file" id="givenImage" ngModel name="givenImage" (change)="selectFile($event)">
+          <input type="file" id="givenImage" ngModel name="givenImage" (change)="selectFile($event)">
           <img *ngIf='changedImage; else already_has' style="width: 50%; height: 50%" src='{{changedImage}}'>
           <ng-template #already_has>
             <img *ngIf='alreadyHasImage(galeria.cover_image)' style="width: 50%; height: 50%" src='{{galeria.cover_image}}'>
           </ng-template>
         </div>
+        <br>
+        <div style="text-align:center">
+          <label for="givenFoto">Adicione mais fotos:</label><br>
+          <input type="file" id="givenFoto" ngModel name="givenFoto" (change)="selectFotos($event)" multiple="multiple">
+        </div>
+        <br>
       </div>
-      <br>
-      <button [disabled]="!createGaleriaForm.valid" class="btn btn-dark" type="submit">Editar Galeria</button>
+        <div id="containerFotos" *ngFor="let foto of imgCollection; let i = index">
+            <img id="thumbeditar" src='{{foto.image}}'>
+            <button id="excluir" (click)="onClickExcluir(i)">X</button>
+        </div>
+     <br>
+      <button [disabled]="!editGaleriaForm.valid" class="btn btn-dark" type="submit">Editar Galeria</button>
     </form>
   </main>
 </div>
