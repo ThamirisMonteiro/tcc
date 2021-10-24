@@ -502,3 +502,144 @@ func (e *Env) InativarFotos(c *gin.Context) {
 		}
 	}
 }
+
+// ************ CARDAPIOS ************ //
+
+func (e *Env) GetAllCardapios(c *gin.Context) {
+	var cardapios []models.Cardapio
+	err := e.DB.Model(&cardapios).Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "cardapios not found",
+		})
+		c.Abort()
+		return
+	}
+	var givenCardapios []models.ReturnCardapio
+	var givenCardapio models.ReturnCardapio
+	for _, cardapio := range cardapios {
+		givenCardapio.ID = cardapio.ID
+		givenCardapio.Name = cardapio.Name
+		givenCardapio.Day = cardapio.Day
+		givenCardapio.Carboidratos = cardapio.Carboidratos
+		givenCardapio.Proteinas = cardapio.Proteinas
+		givenCardapio.Saladas = cardapio.Saladas
+		givenCardapio.Legumes = cardapio.Legumes
+		givenCardapio.Molhos = cardapio.Molhos
+		givenCardapio.Graos = cardapio.Graos
+		givenCardapio.Sucos = cardapio.Sucos
+		givenCardapio.Sobremesas = cardapio.Sobremesas
+		givenCardapio.Active = cardapio.Active
+		givenCardapios = append(givenCardapios, givenCardapio)
+	}
+	c.JSON(200, givenCardapios)
+	return
+}
+
+func (e *Env) CreateCardapio(c *gin.Context) {
+	var cardapio models.Cardapio
+	err := c.ShouldBindJSON(&cardapio)
+	if err != nil ||
+		cardapio.Name == "" ||
+		cardapio.Day == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	cardapio.Active = true
+	cardapio.ID = id.New()
+
+	err = e.CreateCardapioRecord(cardapio)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"msg": err.Error(),
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(200, gin.H{"msg": "cardapio created successfully"})
+}
+
+func (e *Env) CreateCardapioRecord(givenCardapio models.Cardapio) error {
+	_, err := e.DB.Model(&givenCardapio).Insert()
+	if err != nil {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint \"users_email_uindex\"") {
+			return models.ErrEmailAlreadyExists
+		}
+		return err
+	}
+	return nil
+}
+
+func (e *Env) UpdateCardapio(c *gin.Context) {
+	givenName := c.Param("name")
+	var payload models.UpdateCardapioPayload
+	var cardapio models.Cardapio
+	err := c.ShouldBindJSON(&payload)
+	if err != nil || payload.Day == "" ||
+		payload.Carboidratos == "" ||
+		payload.Proteinas == "" ||
+		payload.Saladas == "" ||
+		payload.Legumes == "" ||
+		payload.Molhos == "" ||
+		payload.Graos == "" ||
+		payload.Sucos == "" ||
+		payload.Sobremesas == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	_, err = e.DB.Model(&cardapio).
+		Where("name = ?", givenName).
+		Set("active = ? ", payload.Active).
+		Set("day = ? ", payload.Day).
+		Set("carboidratos = ? ", payload.Carboidratos).
+		Set("proteinas = ? ", payload.Proteinas).
+		Set("saladas = ? ", payload.Saladas).
+		Set("legumes = ? ", payload.Legumes).
+		Set("molhos = ? ", payload.Molhos).
+		Set("graos = ? ", payload.Graos).
+		Set("sucos = ? ", payload.Sucos).
+		Set("sobremesas = ? ", payload.Sobremesas).
+		Update()
+	if err != nil {
+		c.JSON(401, gin.H{
+			"msg": "invalid input",
+		})
+		c.Abort()
+		return
+	}
+}
+
+func (e *Env) GetCardapioByName(c *gin.Context) {
+	var cardapioName models.PayloadName
+	err := c.ShouldBindJSON(&cardapioName)
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": err,
+		})
+		c.Abort()
+		return
+	}
+	var cardapio models.Cardapio
+	err = e.DB.Model(&cardapio).
+		Where("name = ?", cardapioName.Name).
+		First()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "cardapio not found",
+		})
+		c.Abort()
+		return
+	}
+	c.JSON(200, cardapio)
+	return
+}

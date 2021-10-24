@@ -75,6 +75,12 @@ func setupRouter(env controllers.Env) *gin.Engine {
 			protected.POST("/uploadfoto", env.UploadFoto)
 			protected.POST("/fotosbygaleria", env.GetFotosByGaleria)
 			protected.PUT("/inativarfotos", env.InativarFotos)
+
+			// cardapios
+			protected.GET("/cardapios", env.GetAllCardapios)
+			protected.POST("/createcardapio", env.CreateCardapio)
+			protected.POST("/cardapiobyname", env.GetCardapioByName)
+			protected.PUT("/cardapios/:name", env.UpdateCardapio)
 		}
 	}
 	return r
