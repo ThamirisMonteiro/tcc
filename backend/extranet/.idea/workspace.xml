@@ -5,27 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb31c1a-e301-4ce5-9363-ed4b9191ccca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/cardapio.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/cardapios.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/cardapio/cardapio.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/cardapio/cardapio.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/models/cardapio.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/criar-cardapio/criar-cardapio.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/criar-cardapio/criar-cardapio.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/criar-cardapio/criar-cardapio.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/protected.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/protected.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/cardapio.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/cardapio.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/admin-cardapios.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/cardapios.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-cardapios/cardapios.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/header/header.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/info/informacoes.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/cardapio/cardapio.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/info/informacoes.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/info/informacoes.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/cardapio/cardapio.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/info/informacoes.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/models/cardapio.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/models/cardapio.model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

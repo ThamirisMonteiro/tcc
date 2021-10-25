@@ -503,7 +503,7 @@ func (e *Env) InativarFotos(c *gin.Context) {
 	}
 }
 
-// ************ CARDAPIOS ************ //
+// ************ CARDÁPIOS ************ //
 
 func (e *Env) GetAllCardapios(c *gin.Context) {
 	var cardapios []models.Cardapio
@@ -521,14 +521,7 @@ func (e *Env) GetAllCardapios(c *gin.Context) {
 		givenCardapio.ID = cardapio.ID
 		givenCardapio.Name = cardapio.Name
 		givenCardapio.Day = cardapio.Day
-		givenCardapio.Carboidratos = cardapio.Carboidratos
-		givenCardapio.Proteinas = cardapio.Proteinas
-		givenCardapio.Saladas = cardapio.Saladas
-		givenCardapio.Legumes = cardapio.Legumes
-		givenCardapio.Molhos = cardapio.Molhos
-		givenCardapio.Graos = cardapio.Graos
-		givenCardapio.Sucos = cardapio.Sucos
-		givenCardapio.Sobremesas = cardapio.Sobremesas
+		givenCardapio.Items = cardapio.Items
 		givenCardapio.Active = cardapio.Active
 		givenCardapios = append(givenCardapios, givenCardapio)
 	}
@@ -581,15 +574,7 @@ func (e *Env) UpdateCardapio(c *gin.Context) {
 	var payload models.UpdateCardapioPayload
 	var cardapio models.Cardapio
 	err := c.ShouldBindJSON(&payload)
-	if err != nil || payload.Day == "" ||
-		payload.Carboidratos == "" ||
-		payload.Proteinas == "" ||
-		payload.Saladas == "" ||
-		payload.Legumes == "" ||
-		payload.Molhos == "" ||
-		payload.Graos == "" ||
-		payload.Sucos == "" ||
-		payload.Sobremesas == "" {
+	if err != nil || payload.Day == "" {
 		c.JSON(400, gin.H{
 			"msg": "invalid json",
 		})
@@ -601,14 +586,7 @@ func (e *Env) UpdateCardapio(c *gin.Context) {
 		Where("name = ?", givenName).
 		Set("active = ? ", payload.Active).
 		Set("day = ? ", payload.Day).
-		Set("carboidratos = ? ", payload.Carboidratos).
-		Set("proteinas = ? ", payload.Proteinas).
-		Set("saladas = ? ", payload.Saladas).
-		Set("legumes = ? ", payload.Legumes).
-		Set("molhos = ? ", payload.Molhos).
-		Set("graos = ? ", payload.Graos).
-		Set("sucos = ? ", payload.Sucos).
-		Set("sobremesas = ? ", payload.Sobremesas).
+		Set("items = ? ", payload.Items).
 		Update()
 	if err != nil {
 		c.JSON(401, gin.H{
