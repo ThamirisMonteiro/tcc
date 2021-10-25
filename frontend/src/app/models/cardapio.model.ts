@@ -1,5 +1,5 @@
-export class Foto {
+export class Cardapio {
   constructor(
-        public id: string, public image: string, public active: boolean) {}
+        public id: string, public name: string, public day: string, items: string, public active: boolean) {}
 }
 

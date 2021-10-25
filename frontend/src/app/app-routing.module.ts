@@ -8,7 +8,6 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
 import {AdminNoticiasComponent} from "./admin/admin-noticias/admin-noticias.component";
 import {MeusDadosComponent} from "./meus-dados/meus-dados.component";
 import {GaleriasComponent} from "./galerias/galerias.component";
-import {InformacoesComponent} from "./info/informacoes.component";
 import {ServicosComponent} from "./servicos/servicos.component";
 import {AdminUsuariosComponent} from "./admin/admin-usuarios/admin-usuarios.component";
 import {CriarUsuarioComponent} from "./admin/admin-usuarios/criar-usuario/criar-usuario.component";
@@ -21,6 +20,9 @@ import {AdminGaleriasComponent} from "./admin/admin-galerias/admin-galerias.comp
 import {CriarGaleriaComponent} from "./admin/admin-galerias/criar-galeria/criar-galeria.component";
 import {EditarGaleriaComponent} from "./admin/admin-galerias/editar-galeria/editar-galeria.component";
 import {GaleriaComponent} from "./galerias/galeria/galeria.component";
+import {AdminCardapiosComponent} from "./admin/admin-cardapios/admin-cardapios.component";
+import {CardapioComponent} from "./cardapio/cardapio.component";
+import {CriarCardapioComponent} from "./admin/admin-cardapios/criar-cardapio/criar-cardapio.component";
 
 const appRoutes: Routes = [
   // auth
@@ -34,11 +36,13 @@ const appRoutes: Routes = [
   {path: 'admin-usuarios', component: AdminUsuariosComponent},
   {path: 'admin-servicos', component: ServicosComponent},
   {path: 'admin-galerias', component: AdminGaleriasComponent},
+  {path: 'admin-cardapios', component: AdminCardapiosComponent},
 
   // cadastrar
   {path: 'criar-usuario', component: CriarUsuarioComponent},
   {path: 'criar-galeria', component: CriarGaleriaComponent},
   {path: 'criar-noticia', component: CriarNoticiaComponent},
+  {path: 'criar-cardapio', component: CriarCardapioComponent},
 
   // editar
   {path: 'editar-usuario', component: EditarUsuarioComponent},
@@ -47,7 +51,7 @@ const appRoutes: Routes = [
 
   // main pages
   {path: 'home', component: HomeComponent},
-  {path: 'info', component: InformacoesComponent},
+  {path: 'cardapio', component: CardapioComponent},
   {path: 'noticias', component: NoticiasComponent},
   {path: 'galerias', component: GaleriasComponent},
   {path: 'meus-dados', component: MeusDadosComponent},

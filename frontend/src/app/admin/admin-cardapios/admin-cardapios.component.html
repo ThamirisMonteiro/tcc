@@ -9,13 +9,13 @@
 </svg>
 
 <div class="p-3 pb-md-4 mx-auto text-center">
-  <h2 class="fw-normal">Administrar Notícias</h2>
-  <p class="fs-5 text-muted">Utilize as funcionalidades abaixo para gerenciar notícias.</p>
+  <h2 class="fw-normal">Administrar Cardápios</h2>
+  <p class="fs-5 text-muted">Utilize as funcionalidades abaixo para gerenciar cardápios.</p>
 </div>
 
 <div class="container">
   <div class="row offset-1 flex">
-    <p class="col">Total de Notícias: {{ noticias?.length || '0' }}</p>
+    <p class="col">Total de Cardápios: {{ cardapios?.length || '0' }}</p>
     <form class="col offset-3 flex">
       <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar" style="width: 80%;">
     </form>
@@ -25,32 +25,30 @@
     <thead>
     <tr>
       <th scope="col" class="center" id="id">ID</th>
-      <th scope="col" class="center" id="url">URL</th>
-      <th scope="col" class="center" id="titulo">Título</th>
-      <th scope="col" class="center" id="categoria">Categoria</th>
+      <th scope="col" class="center" id="dia_da_semana">Dia da Semana</th>
+      <th scope="col" class="center" id="nome">Nome</th>
       <th scope="col" class="center" id="editar">Editar</th>
       <th scope="col" class="center" id="ativo">Ativo</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let noticia of noticias; let i = index">
-      <td class="center" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'">{{ i+1 }}</td>
-      <td class="center" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'">{{ noticia.address }}</td>
-      <td class="center" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'">{{ noticia.title }}</td>
-      <td class="center" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'">{{ noticia.category }}</td>
-      <td class="text-center" (click)="onClickEditar(noticia.address)">
-        <svg id="editar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'">>
+    <tr *ngFor="let cardapio of cardapios; let i = index">
+      <td class="center" [ngClass]="!cardapio.active ? 'text-secondary' : 'text-white'">{{ i+1 }}</td>
+      <td class="center" [ngClass]="!cardapio.active ? 'text-secondary' : 'text-white'">{{ cardapio.name }}</td>
+      <td class="center" [ngClass]="!cardapio.active ? 'text-secondary' : 'text-white'">{{ cardapio.day }}</td>
+      <td class="text-center" (click)="onClickEditar(cardapio.name)">
+        <svg id="editar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" [ngClass]="!cardapio.active ? 'text-secondary' : 'text-white'">>
           <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
           <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
         </svg>
       </td>
       <td>
         <div class="form-check centralizado">
-          <label class="form-check-label"> <input class="form-check-input" type="checkbox" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="!noticia.active ? 'text-secondary' : 'text-white'" [checked]="noticia.active" (click)="onCheckboxClick(i)"/></label>
+          <label class="form-check-label"> <input class="form-check-input" type="checkbox" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="!cardapio.active ? 'text-secondary' : 'text-white'" [checked]="cardapio.active" (click)="onCheckboxClick(i)"/></label>
         </div>
       </td>
     </tr>
     </tbody>
   </table>
-  <button class="btn btn-dark col-2 offset-5" id="nova_noticia" routerLinkActive="active" routerLink="/criar-noticia">Nova Notícia</button>
+  <button class="btn btn-dark col-2 offset-5" id="novo_cardapio" routerLinkActive="active" routerLink="/criar-cardapio">Novo Cardápio</button>
 </div>

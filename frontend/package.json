@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@ng-select/ng-select": "^7.3.0",
+    "angular-dual-listbox": "^6.0.0",
     "bootstrap": "^5.1.0",
     "ng-bootstrap": "^1.6.3",
     "ng-image-slider": "^2.8.0",

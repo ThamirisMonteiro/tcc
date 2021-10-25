@@ -16,7 +16,6 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AdminNoticiasComponent } from './admin/admin-noticias/admin-noticias.component';
 import { ServicosComponent } from './servicos/servicos.component';
-import { InformacoesComponent } from './info/informacoes.component';
 import { GaleriasComponent } from './galerias/galerias.component';
 import { MeusDadosComponent } from './meus-dados/meus-dados.component';
 import { AdminUsuariosComponent } from './admin/admin-usuarios/admin-usuarios.component';
@@ -34,6 +33,10 @@ import { CriarGaleriaComponent } from './admin/admin-galerias/criar-galeria/cria
 import { EditarGaleriaComponent } from './admin/admin-galerias/editar-galeria/editar-galeria.component';
 import { GaleriaComponent } from './galerias/galeria/galeria.component';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { AdminCardapiosComponent } from './admin/admin-cardapios/admin-cardapios.component';
+import { CardapioComponent } from './cardapio/cardapio.component';
+import { CriarCardapioComponent } from './admin/admin-cardapios/criar-cardapio/criar-cardapio.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -49,7 +52,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
     ResetPasswordComponent,
     AdminNoticiasComponent,
     ServicosComponent,
-    InformacoesComponent,
     GaleriasComponent,
     MeusDadosComponent,
     AdminUsuariosComponent,
@@ -64,6 +66,9 @@ import { NgImageSliderModule } from 'ng-image-slider';
     CriarGaleriaComponent,
     EditarGaleriaComponent,
     GaleriaComponent,
+    AdminCardapiosComponent,
+    CardapioComponent,
+    CriarCardapioComponent,
   ],
     imports: [
       BrowserModule,
@@ -73,7 +78,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
       HttpClientModule,
       BrowserAnimationsModule,
       NgbModule,
-      NgImageSliderModule
+      NgImageSliderModule,
+      NgSelectModule
     ],
   providers: [],
   bootstrap: [AppComponent]
