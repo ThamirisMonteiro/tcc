@@ -521,7 +521,15 @@ func (e *Env) GetAllCardapios(c *gin.Context) {
 		givenCardapio.ID = cardapio.ID
 		givenCardapio.Name = cardapio.Name
 		givenCardapio.Day = cardapio.Day
-		givenCardapio.Items = cardapio.Items
+		givenCardapio.Carboidrato = cardapio.Carboidrato
+		givenCardapio.Proteina = cardapio.Proteina
+		givenCardapio.Salada = cardapio.Salada
+		givenCardapio.Legume = cardapio.Legume
+		givenCardapio.Grao = cardapio.Grao
+		givenCardapio.Carboidrato = cardapio.Carboidrato
+		givenCardapio.Molho = cardapio.Molho
+		givenCardapio.Suco = cardapio.Suco
+		givenCardapio.Sobremesa = cardapio.Sobremesa
 		givenCardapio.Active = cardapio.Active
 		givenCardapios = append(givenCardapios, givenCardapio)
 	}
@@ -586,7 +594,14 @@ func (e *Env) UpdateCardapio(c *gin.Context) {
 		Where("name = ?", givenName).
 		Set("active = ? ", payload.Active).
 		Set("day = ? ", payload.Day).
-		Set("items = ? ", payload.Items).
+		Set("carboidrato = ? ", payload.Carboidrato).
+		Set("proteina = ? ", payload.Proteina).
+		Set("salada = ? ", payload.Salada).
+		Set("legume = ? ", payload.Legume).
+		Set("molho = ? ", payload.Molho).
+		Set("grao = ? ", payload.Grao).
+		Set("suco = ? ", payload.Suco).
+		Set("sobremesa = ? ", payload.Sobremesa).
 		Update()
 	if err != nil {
 		c.JSON(401, gin.H{
