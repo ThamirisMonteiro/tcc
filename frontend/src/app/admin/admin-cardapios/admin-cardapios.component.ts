@@ -37,6 +37,7 @@ export class AdminCardapiosComponent implements OnInit {
   }
 
   onClickEditar(name: string) {
+    console.log(name)
     this.router.navigate(["editar-cardapio"], {state: {name: name}}).then()
   }
 

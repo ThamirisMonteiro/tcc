@@ -27,7 +27,7 @@ table {
   text-align: center;
 }
 
-#editar {
+#editar, #dia_da_semana {
   /*width:5%;*/
   text-align: center;
 }
@@ -56,3 +56,4 @@ td {
 #editar {
   cursor:pointer;
 }
+

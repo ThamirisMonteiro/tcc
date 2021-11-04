@@ -25,28 +25,28 @@
         </div>
       </div>
     </div>
-    <form #createCardapioForm="ngForm" (ngSubmit)="onSubmit(createCardapioForm)" *ngIf="!isLoading">
-      <h3 class="h3 mb-3 fw-normal">Cadastrar Nova Galeria</h3>
-      <h5 class="mb-3 fw-normal">A galeria criada poderá ser acessada na página de Galerias.</h5>
+    <form #editCardapioForm="ngForm" (ngSubmit)="onSubmit(editCardapioForm)" *ngIf="!isLoading">
+      <h3 class="h3 mb-3 fw-normal">Editar Cardápio</h3>
+      <h5 class="mb-3 fw-normal">Altere os campos abaixo.</h5>
       <div class="form-group">
         <div class="form-floating">
-          <input autofocus class="form-control" id="name" name="name" ngModel placeholder="name" required type="text">
+          <input autofocus class="form-control" disabled id="name" name="name" ngModel placeholder="name" value={{cardapio.name}} required type="text">
           <label for="name">Nome</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="day" ngModel name="day">
+          <select class="form-control" id="day" ngModel name="day" required [(ngModel)]="cardapio.day">
+            <option>{{cardapio.day}}</option>
             <option>Segunda-feira</option>
             <option>Terça-feira</option>
             <option>Quarta-feira</option>
             <option>Quinta-feira</option>
             <option>Sexta-feira</option>
-            <option>Sábado</option>
-            <option>Domingo</option>
           </select>
           <label for="day">Dia da Semana</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="carboidrato" ngModel name="carboidrato" required>
+          <select class="form-control" id="carboidrato" ngModel name="carboidrato" required [(ngModel)]="cardapio.carboidrato">
+            <option>{{cardapio.carboidrato}}</option>
             <option>Arroz</option>
             <option>Arroz Integral</option>
             <option>Batata</option>
@@ -58,7 +58,8 @@
           <label for="carboidrato">Carboidrato</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="proteina" ngModel name="proteina" required>
+          <select class="form-control" id="proteina" ngModel name="proteina" required [(ngModel)]="cardapio.proteina">
+            <option>{{cardapio.proteina}}</option>
             <option>PTS</option>
             <option>Cogumelo</option>
             <option>Seitan</option>
@@ -66,7 +67,8 @@
           <label for="proteina">Proteína</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="salada" ngModel name="salada" required>
+          <select class="form-control" id="salada" ngModel name="salada" required [(ngModel)]="cardapio.salada">
+            <option>{{cardapio.salada}}</option>
             <option>Alface</option>
             <option>Tomate</option>
             <option>Pepino</option>
@@ -78,7 +80,8 @@
           <label for="salada">Salada</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="legume" ngModel name="legume" required>
+          <select class="form-control" id="legume" ngModel name="legume" required [(ngModel)]="cardapio.legume">
+            <option>{{cardapio.legume}}</option>
             <option>Cenoura</option>
             <option>Vagem</option>
             <option>Chuchu</option>
@@ -88,7 +91,8 @@
           <label for="legume">Legume</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="molho" ngModel name="molho" required>
+          <select class="form-control" id="molho" ngModel name="molho" required [(ngModel)]="cardapio.molho">
+            <option>{{cardapio.molho}}</option>
             <option>Branco</option>
             <option>Pomodoro</option>
             <option>Alfredo</option>
@@ -98,7 +102,8 @@
           <label for="molho">Molho</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="grao" ngModel name="grao" required>
+          <select class="form-control" id="grao" ngModel name="grao" required [(ngModel)]="cardapio.grao">
+            <option>{{cardapio.grao}}</option>
             <option>Feijão</option>
             <option>Lentilha</option>
             <option>Grão de Bico</option>
@@ -106,7 +111,8 @@
           <label for="grao">Grão</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="suco" ngModel name="suco" required>
+          <select class="form-control" id="suco" ngModel name="suco" required [(ngModel)]="cardapio.suco">
+            <option>{{cardapio.suco}}</option>
             <option>Morango</option>
             <option>Uva</option>
             <option>Laranja</option>
@@ -117,7 +123,8 @@
           <label for="suco">Suco</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="sobremesa" ngModel name="sobremesa" required>
+          <select class="form-control" id="sobremesa" ngModel name="sobremesa" required [(ngModel)]="cardapio.sobremesa">
+            <option>{{cardapio.sobremesa}}</option>
             <option>Gelatina</option>
             <option>Pudim</option>
             <option>Flan</option>
@@ -128,8 +135,7 @@
           <label for="sobremesa">Sobremesa</label>
         </div>
       </div>
-      <br>
-      <button [disabled]="!createCardapioForm.valid" class="btn btn-dark" type="submit">Cadastrar Cardápio</button>
+      <button [disabled]="!editCardapioForm.valid" class="btn btn-dark" type="submit">Editar Cardápio</button>
     </form>
   </main>
 </div>

@@ -37,12 +37,14 @@ export class CardapiosService {
     return this.http.post<Cardapio>(this.cardapioByName, {name: name}, httpOptions);
   }
 
-  createCardapio(name: string, day: string, items: string, active: boolean, token: string) {
+  createCardapio(name: string, day: string, carboidrato: string, proteina: string, salada: string, legume: string,
+                 molho: string, grao: string, suco: string, sobremesa: string, active: boolean, token: string) {
       const httpOptions = {
         headers: new HttpHeaders().set("Authorization", "Bearer " + token)
       }
-      return this.http.post(this.createCardapioURL,{name: name, day: day, items: items, active: active},
-        httpOptions)
+      return this.http.post(this.createCardapioURL,{name: name, day: day, carboidrato: carboidrato,
+        proteina: proteina, salada: salada, legume: legume, molho: molho, grao: grao, suco: suco, sobremesa: sobremesa,
+      active: active}, httpOptions)
         .pipe(catchError(errorResponse => {
           let errorMessage = 'Ocorreu um erro desconhecido!'
           if (!errorResponse.error || !errorResponse.error.msg) {

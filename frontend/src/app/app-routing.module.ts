@@ -23,12 +23,13 @@ import {GaleriaComponent} from "./galerias/galeria/galeria.component";
 import {AdminCardapiosComponent} from "./admin/admin-cardapios/admin-cardapios.component";
 import {CardapioComponent} from "./cardapio/cardapio.component";
 import {CriarCardapioComponent} from "./admin/admin-cardapios/criar-cardapio/criar-cardapio.component";
+import {EditarCardapioComponent} from "./admin/admin-cardapios/editar-cardapio/editar-cardapio.component";
 
 const appRoutes: Routes = [
   // auth
   {path: 'login', component: AuthComponent},
-  {path: 'reset-password', component: ResetPasswordComponent},
-  {path: 'change-password', component: ChangePasswordComponent},
+  {path: 'resetar-senha', component: ResetPasswordComponent},
+  {path: 'trocar-senha', component: ChangePasswordComponent},
 
   // admin
   {path: 'admin', component: AdminComponent},
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   {path: 'editar-usuario', component: EditarUsuarioComponent},
   {path: 'editar-galeria', component: EditarGaleriaComponent},
   {path: 'editar-noticia', component: EditarNoticiaComponent},
+  {path: 'editar-cardapio', component: EditarCardapioComponent},
 
   // main pages
   {path: 'home', component: HomeComponent},
