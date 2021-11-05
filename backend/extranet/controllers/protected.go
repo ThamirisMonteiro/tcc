@@ -5,6 +5,7 @@ import (
 	"extranet/models"
 	"github.com/gin-gonic/gin"
 	"log"
+	"strconv"
 	"strings"
 )
 
@@ -634,5 +635,147 @@ func (e *Env) GetCardapioByName(c *gin.Context) {
 		return
 	}
 	c.JSON(200, cardapio)
+	return
+}
+
+// ************ SERVIÇOS ************ //
+
+func (e *Env) GetAllServicos(c *gin.Context) {
+	var servicos []models.Servico
+	var servicosSolicitados []models.ServicoSolicitado
+	err := e.DB.Model(&servicos).Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "servicos not found",
+		})
+		c.Abort()
+		return
+	}
+	var givenServicos []models.ReturnServico
+	var givenServico models.ReturnServico
+	for _, servico := range servicos {
+		givenServico.ID = servico.ID
+		givenServico.Name = servico.Name
+		givenServico.Category = servico.Category
+		givenServico.Active = servico.Active
+		err := e.DB.Model(&servicosSolicitados).
+			Where("service_id = ?", servico.ID).
+			Select()
+		if err != nil {
+			c.JSON(404, gin.H{
+				"msg": "servicos solicitados not found",
+			})
+			c.Abort()
+			return
+		}
+		givenServico.Quantity = strconv.Itoa(len(servicosSolicitados))
+		givenServicos = append(givenServicos, givenServico)
+	}
+	c.JSON(200, givenServicos)
+	return
+}
+
+func (e *Env) CreateServico(c *gin.Context) {
+	var servico models.Servico
+	err := c.ShouldBindJSON(&servico)
+	if err != nil ||
+		servico.Name == "" ||
+		servico.Category == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	servico.Active = true
+	servico.ID = id.New()
+
+	err = e.CreateServicoRecord(servico)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"msg": err.Error(),
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(200, gin.H{"msg": "servico created successfully"})
+}
+
+func (e *Env) CreateServicoRecord(givenServico models.Servico) error {
+	_, err := e.DB.Model(&givenServico).Insert()
+	if err != nil {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint \"users_email_uindex\"") {
+			return models.ErrEmailAlreadyExists
+		}
+		return err
+	}
+	return nil
+}
+
+func (e *Env) UpdateServico(c *gin.Context) {
+	givenName := c.Param("name")
+	var payload models.UpdateServicoPayload
+	var servico models.Servico
+	err := c.ShouldBindJSON(&payload)
+	if err != nil || payload.Category == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	_, err = e.DB.Model(&servico).
+		Where("name = ?", givenName).
+		Set("active = ? ", payload.Active).
+		Set("category = ? ", payload.Category).
+		Set("responsible_sector = ? ", payload.ResponsibleSector).
+		Update()
+	if err != nil {
+		c.JSON(401, gin.H{
+			"msg": "invalid input",
+		})
+		c.Abort()
+		return
+	}
+}
+
+func (e *Env) GetServicoByName(c *gin.Context) {
+	var servicoName models.PayloadName
+	err := c.ShouldBindJSON(&servicoName)
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": err,
+		})
+		c.Abort()
+		return
+	}
+	var servico models.ReturnServico
+	err = e.DB.Model(&servico).
+		Where("name = ?", servicoName.Name).
+		First()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "servico not found",
+		})
+		c.Abort()
+		return
+	}
+	var servicosSolicitados []models.ServicoSolicitado
+	err = e.DB.Model(&servicosSolicitados).
+		Where("servico_id = ?", servico.ID).
+		Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "servicos solicitados not found",
+		})
+		c.Abort()
+		return
+	}
+	servico.Quantity = strconv.Itoa(len(servicosSolicitados))
+	c.JSON(200, servico)
 	return
 }

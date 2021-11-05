@@ -81,6 +81,12 @@ func setupRouter(env controllers.Env) *gin.Engine {
 			protected.POST("/createcardapio", env.CreateCardapio)
 			protected.POST("/cardapiobyname", env.GetCardapioByName)
 			protected.PUT("/cardapios/:name", env.UpdateCardapio)
+
+			// servicos
+			protected.GET("/servicos", env.GetAllServicos)
+			protected.POST("/createservico", env.CreateServico)
+			protected.POST("/servicobyname", env.GetServicoByName)
+			protected.PUT("/servicos/:name", env.UpdateServico)
 		}
 	}
 	return r
