@@ -38,6 +38,7 @@ import { CardapioComponent } from './cardapio/cardapio.component';
 import { CriarCardapioComponent } from './admin/admin-cardapios/criar-cardapio/criar-cardapio.component';
 import {NgSelectModule} from "@ng-select/ng-select";
 import { EditarCardapioComponent } from './admin/admin-cardapios/editar-cardapio/editar-cardapio.component';
+import { AdminServicosComponent } from './admin/admin-servicos/admin-servicos.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { EditarCardapioComponent } from './admin/admin-cardapios/editar-cardapio
     CardapioComponent,
     CriarCardapioComponent,
     EditarCardapioComponent,
+    AdminServicosComponent,
   ],
     imports: [
       BrowserModule,

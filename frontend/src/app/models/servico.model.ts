@@ -1,5 +1,5 @@
-export class Cardapio {
+export class Servico {
   constructor(
-        public id: string, public name: string, public day: string,public carboidrato: string,public proteina: string, public salada: string, public legume: string,public  molho: string, public grao: string, public suco: string,public  sobremesa: string, public active: boolean) {}
+        public id: string, public name: string, public category: string,public responsible_sector: string, public quantity: string, public active: boolean) {}
 }
 

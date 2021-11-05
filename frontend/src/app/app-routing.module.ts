@@ -24,6 +24,7 @@ import {AdminCardapiosComponent} from "./admin/admin-cardapios/admin-cardapios.c
 import {CardapioComponent} from "./cardapio/cardapio.component";
 import {CriarCardapioComponent} from "./admin/admin-cardapios/criar-cardapio/criar-cardapio.component";
 import {EditarCardapioComponent} from "./admin/admin-cardapios/editar-cardapio/editar-cardapio.component";
+import {AdminServicosComponent} from "./admin/admin-servicos/admin-servicos.component";
 
 const appRoutes: Routes = [
   // auth
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'admin-noticias', component: AdminNoticiasComponent},
   {path: 'admin-usuarios', component: AdminUsuariosComponent},
-  {path: 'admin-servicos', component: ServicosComponent},
+  {path: 'admin-servicos', component: AdminServicosComponent},
   {path: 'admin-galerias', component: AdminGaleriasComponent},
   {path: 'admin-cardapios', component: AdminCardapiosComponent},
 
@@ -51,12 +52,13 @@ const appRoutes: Routes = [
   {path: 'editar-noticia', component: EditarNoticiaComponent},
   {path: 'editar-cardapio', component: EditarCardapioComponent},
 
-  // main pages
+  // páginas principais
   {path: 'home', component: HomeComponent},
   {path: 'cardapio', component: CardapioComponent},
   {path: 'noticias', component: NoticiasComponent},
   {path: 'galerias', component: GaleriasComponent},
   {path: 'meus-dados', component: MeusDadosComponent},
+  {path: 'servicos', component: ServicosComponent},
   {path: 'noticias/:categoria/:address', component: NoticiaComponent},
   {path: 'galerias/:name', component: GaleriaComponent},
 
