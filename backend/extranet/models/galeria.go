@@ -37,3 +37,7 @@ type UpdateGaleriaPayload struct {
 type PayloadName struct {
 	Name string `json:"name"`
 }
+
+type PayloadUser struct {
+	UserID id.ID `json:"user_id"`
+}

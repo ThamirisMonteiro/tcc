@@ -1,9 +1,11 @@
 package controllers
 
 import (
+	"extranet/core"
 	"extranet/core/id"
 	"extranet/models"
 	"github.com/gin-gonic/gin"
+	"github.com/go-pg/pg/v10"
 	"log"
 	"strconv"
 	"strings"
@@ -675,6 +677,52 @@ func (e *Env) GetAllServicos(c *gin.Context) {
 	return
 }
 
+func (e *Env) GetAllServicosSolicitadosByUser(c *gin.Context) {
+	var servicoUser models.PayloadUser
+	err := c.ShouldBindJSON(&servicoUser)
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": err,
+		})
+		c.Abort()
+		return
+	}
+	var servicosSolicitados []models.ServicoSolicitado
+	err = e.DB.Model(&servicosSolicitados).
+		Where("user_id = ?", servicoUser.UserID).Select()
+	if err != nil {
+		if err != pg.ErrNoRows {
+			c.JSON(404, gin.H{
+				"msg": "servicos solicitados not found",
+			})
+			c.Abort()
+			return
+		}
+	}
+	var servico models.Servico
+	var resultServicoSolicitado models.ReturnServicoSolicitado
+	var resultServicosSolicitados []models.ReturnServicoSolicitado
+	for _, servicoSolicitado := range servicosSolicitados {
+		err := e.DB.Model(&servico).Where("id = ?", servicoSolicitado.ServiceID).Select()
+		if err != nil {
+			c.JSON(404, gin.H{
+				"msg": "servico not found",
+			})
+			c.Abort()
+			return
+		}
+		resultServicoSolicitado.Name = servico.Name
+		resultServicoSolicitado.Sector = servico.ResponsibleSector
+		resultServicoSolicitado.Status = servicoSolicitado.Status
+		resultServicoSolicitado.CreatedDate = servicoSolicitado.CreatedDate
+		resultServicoSolicitado.Category = servico.Category
+		resultServicoSolicitado.Description = servicoSolicitado.Description
+		resultServicosSolicitados = append(resultServicosSolicitados, resultServicoSolicitado)
+	}
+	c.JSON(200, resultServicosSolicitados)
+	return
+}
+
 func (e *Env) CreateServico(c *gin.Context) {
 	var servico models.Servico
 	err := c.ShouldBindJSON(&servico)
@@ -704,7 +752,65 @@ func (e *Env) CreateServico(c *gin.Context) {
 	c.JSON(200, gin.H{"msg": "servico created successfully"})
 }
 
+func (e *Env) SolicitarServico(c *gin.Context) {
+	var servicoSolicitado models.ServicoSolicitadoJSON
+	err := c.ShouldBindJSON(&servicoSolicitado)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+	clock := core.NewSystemClock()
+
+	var servico models.Servico
+	err = e.DB.Model(&servico).
+		Where("category = ?", servicoSolicitado.Category).
+		Where("name = ?", servicoSolicitado.Name).
+		First()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "servico not found",
+		})
+		c.Abort()
+		return
+	}
+
+	var resultServicoSolicitado models.ServicoSolicitado
+
+	resultServicoSolicitado.ID = id.New()
+	resultServicoSolicitado.Description = servicoSolicitado.Description
+	resultServicoSolicitado.CreatedDate = clock.TodayAtBrazil().String()
+	resultServicoSolicitado.Status = "criado"
+	resultServicoSolicitado.ServiceID = servico.ID
+	resultServicoSolicitado.UserID = servicoSolicitado.UserID
+
+	err = e.CreateServicoSolicitadoRecord(resultServicoSolicitado)
+	if err != nil {
+		log.Println(err)
+		c.JSON(500, gin.H{
+			"msg": err.Error(),
+		})
+		c.Abort()
+		return
+	}
+
+	c.JSON(200, gin.H{"msg": "solicitacao created successfully"})
+}
+
 func (e *Env) CreateServicoRecord(givenServico models.Servico) error {
+	_, err := e.DB.Model(&givenServico).Insert()
+	if err != nil {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint \"users_email_uindex\"") {
+			return models.ErrEmailAlreadyExists
+		}
+		return err
+	}
+	return nil
+}
+
+func (e *Env) CreateServicoSolicitadoRecord(givenServico models.ServicoSolicitado) error {
 	_, err := e.DB.Model(&givenServico).Insert()
 	if err != nil {
 		if strings.Contains(err.Error(), "duplicate key value violates unique constraint \"users_email_uindex\"") {
@@ -753,7 +859,7 @@ func (e *Env) GetServicoByName(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	var servico models.ReturnServico
+	var servico models.Servico
 	err = e.DB.Model(&servico).
 		Where("name = ?", servicoName.Name).
 		First()
@@ -764,18 +870,6 @@ func (e *Env) GetServicoByName(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	var servicosSolicitados []models.ServicoSolicitado
-	err = e.DB.Model(&servicosSolicitados).
-		Where("servico_id = ?", servico.ID).
-		Select()
-	if err != nil {
-		c.JSON(404, gin.H{
-			"msg": "servicos solicitados not found",
-		})
-		c.Abort()
-		return
-	}
-	servico.Quantity = strconv.Itoa(len(servicosSolicitados))
 	c.JSON(200, servico)
 	return
 }

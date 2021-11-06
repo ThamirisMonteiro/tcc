@@ -14,12 +14,13 @@ type Servico struct {
 }
 
 type ReturnServico struct {
-	ID                id.ID  `json:"id"`
-	Name              string `json:"name"`
-	Category          string `json:"category"`
-	ResponsibleSector string `json:"responsible_sector"`
-	Active            bool   `json:"active"`
-	Quantity          string `json:"quantity"`
+	tableName         struct{} `pg:"extranet.servicos"`
+	ID                id.ID    `json:"id"`
+	Name              string   `json:"name"`
+	Category          string   `json:"category"`
+	ResponsibleSector string   `json:"responsible_sector"`
+	Active            bool     `json:"active"`
+	Quantity          string   `json:"quantity"`
 }
 
 type UpdateServicoPayload struct {

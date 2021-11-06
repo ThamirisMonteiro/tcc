@@ -84,7 +84,9 @@ func setupRouter(env controllers.Env) *gin.Engine {
 
 			// servicos
 			protected.GET("/servicos", env.GetAllServicos)
+			protected.POST("/servicossolicitadosbyuser", env.GetAllServicosSolicitadosByUser)
 			protected.POST("/createservico", env.CreateServico)
+			protected.POST("/solicitarservico", env.SolicitarServico)
 			protected.POST("/servicobyname", env.GetServicoByName)
 			protected.PUT("/servicos/:name", env.UpdateServico)
 		}

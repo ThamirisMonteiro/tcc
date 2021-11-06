@@ -5,19 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb31c1a-e301-4ce5-9363-ed4b9191ccca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/servico.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/servico_solicitado.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/servicos.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/models/servico.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/clock.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/country/country.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/date/date.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/timeutil/timeutil.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/criar-servico/criar-servico.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/criar-servico/criar-servico.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/criar-servico/criar-servico.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/models/servico-solicitado.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/solicitar-servico/solicitar-servico.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/solicitar-servico/solicitar-servico.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/solicitar-servico/solicitar-servico.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/protected.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/protected.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/galeria.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/galeria.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/servico.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/servico.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/servico_solicitado.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/servico_solicitado.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/admin-servicos.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/servicos.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/servicos.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/servicos/servicos.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,13 +208,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/controllers/protected.go</url>
-          <line>747</line>
-          <option name="timeStamp" value="2" />
+          <line>756</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/controllers/protected.go</url>
-          <line>722</line>
-          <option name="timeStamp" value="8" />
+          <line>767</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
