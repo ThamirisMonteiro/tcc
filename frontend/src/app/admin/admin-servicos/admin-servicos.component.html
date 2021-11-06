@@ -35,8 +35,8 @@
     <tbody>
     <tr *ngFor="let servico of servicos; let i = index">
       <td class="center" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">{{ i+1 }}</td>
-      <td class="center" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">{{ servico.name }}</td>
       <td class="center" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">{{ servico.category}}</td>
+      <td class="center" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">{{ servico.name }}</td>
       <td class="center" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">{{ servico.quantity}}</td>
       <td class="text-center" (click)="onClickEditar(servico.name)">
         <svg id="editar" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" [ngClass]="!servico.active ? 'text-secondary' : 'text-white'">>

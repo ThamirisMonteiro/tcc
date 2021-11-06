@@ -7,46 +7,8 @@ table {
   margin-right: auto;
 }
 
-#id {
-  /*width:5%;*/
+#id, #name, #categoria, #nome, #solicitacoes, #editar,  #ativo, .centralizado, td {
   text-align: center;
-}
-
-#name {
-  /*width:5%;*/
-  text-align: center;
-}
-
-#category {
-  /*width:5%;*/
-  text-align: center;
-}
-
-#responsible_sector {
-  /*width:5%;*/
-  text-align: center;
-}
-
-#editar {
-  /*width:5%;*/
-  text-align: center;
-}
-
-#ativo {
-  /*width:5%;*/
-  text-align: center;
-}
-
-.centralizado {
-  text-align: center;
-}
-
-td {
-  text-align: center;
-}
-
-#nova_noticia {
-  width: 10%;
 }
 
 .flex {

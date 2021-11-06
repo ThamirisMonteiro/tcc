@@ -25,6 +25,9 @@ import {CardapioComponent} from "./cardapio/cardapio.component";
 import {CriarCardapioComponent} from "./admin/admin-cardapios/criar-cardapio/criar-cardapio.component";
 import {EditarCardapioComponent} from "./admin/admin-cardapios/editar-cardapio/editar-cardapio.component";
 import {AdminServicosComponent} from "./admin/admin-servicos/admin-servicos.component";
+import {CriarServicoComponent} from "./admin/admin-servicos/criar-servico/criar-servico.component";
+import {EditarServicoComponent} from "./admin/admin-servicos/editar-servico/editar-servico.component";
+import {SolicitarServicoComponent} from "./servicos/solicitar-servico/solicitar-servico.component";
 
 const appRoutes: Routes = [
   // auth
@@ -45,12 +48,14 @@ const appRoutes: Routes = [
   {path: 'criar-galeria', component: CriarGaleriaComponent},
   {path: 'criar-noticia', component: CriarNoticiaComponent},
   {path: 'criar-cardapio', component: CriarCardapioComponent},
+  {path: 'criar-servico', component: CriarServicoComponent},
 
   // editar
   {path: 'editar-usuario', component: EditarUsuarioComponent},
   {path: 'editar-galeria', component: EditarGaleriaComponent},
   {path: 'editar-noticia', component: EditarNoticiaComponent},
   {path: 'editar-cardapio', component: EditarCardapioComponent},
+  {path: 'editar-servico', component: EditarServicoComponent},
 
   // páginas principais
   {path: 'home', component: HomeComponent},
@@ -59,6 +64,7 @@ const appRoutes: Routes = [
   {path: 'galerias', component: GaleriasComponent},
   {path: 'meus-dados', component: MeusDadosComponent},
   {path: 'servicos', component: ServicosComponent},
+  {path: 'solicitar-servico', component: SolicitarServicoComponent},
   {path: 'noticias/:categoria/:address', component: NoticiaComponent},
   {path: 'galerias/:name', component: GaleriaComponent},
 

@@ -6,7 +6,7 @@ import {ServicosService} from "./servicos.service";
 import {Servico} from "../../models/servico.model";
 
 @Component({
-  selector: 'app-servicos',
+  selector: 'app-admin-servicos',
   templateUrl: './admin-servicos.component.html',
   styleUrls: ['./admin-servicos.component.css']
 })
