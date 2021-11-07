@@ -28,6 +28,7 @@ import {AdminServicosComponent} from "./admin/admin-servicos/admin-servicos.comp
 import {CriarServicoComponent} from "./admin/admin-servicos/criar-servico/criar-servico.component";
 import {EditarServicoComponent} from "./admin/admin-servicos/editar-servico/editar-servico.component";
 import {SolicitarServicoComponent} from "./servicos/solicitar-servico/solicitar-servico.component";
+import {AdminPrevisaoTempoComponent} from "./admin/admin-previsao-tempo/admin-previsao-tempo.component";
 
 const appRoutes: Routes = [
   // auth
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
   {path: 'admin-servicos', component: AdminServicosComponent},
   {path: 'admin-galerias', component: AdminGaleriasComponent},
   {path: 'admin-cardapios', component: AdminCardapiosComponent},
+  {path: 'admin-previsao-do-tempo', component: AdminPrevisaoTempoComponent},
 
   // cadastrar
   {path: 'criar-usuario', component: CriarUsuarioComponent},

@@ -1,0 +1,19 @@
+<div class="container row text-center">
+  <h3 class="fw-normal">Cardápio de Hoje</h3>
+  <div class="col-3 card">
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4" *ngIf="cardapio; else noCardapio">
+          <li>{{cardapio.carboidrato}}</li>
+          <li>{{cardapio.proteina}}</li>
+          <li>{{cardapio.salada}}</li>
+          <li>{{cardapio.legume}}</li>
+          <li>{{cardapio.molho}}</li>
+          <li>{{cardapio.grao}}</li>
+          <li>{{cardapio.suco}}</li>
+          <li>{{cardapio.sobremesa}}</li>
+        </ul>
+        <ng-template #noCardapio>Não há cardápios para hoje!</ng-template>
+        <button type="button" class="w-60 btn btn-lg btn-outline-primary" routerLinkActive="active" routerLink="/cardapio">Acessar Cardápio</button>
+      </div>
+    </div>
+  </div>

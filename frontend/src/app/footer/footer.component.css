@@ -19,3 +19,7 @@ ul {
 div {
   padding-bottom: 120px;
 }
+
+li {
+  cursor:pointer;
+}

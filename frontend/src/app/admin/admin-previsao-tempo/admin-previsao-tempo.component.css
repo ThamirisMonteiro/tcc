@@ -1,0 +1,16 @@
+table {
+  width: 84%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}

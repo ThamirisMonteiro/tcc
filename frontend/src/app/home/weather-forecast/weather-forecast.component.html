@@ -1,0 +1,11 @@
+<div class="container row text-center">
+  <div class="card col-2" style="margin-right: 10px" *ngFor="let item of details">
+    <div class="card-header"><h5 class="card-title"> {{item['dt_txt'] | date:'short':'+0300':'pt'}}</h5></div>
+       <div class="card-img-top">
+         <img src="http://openweathermap.org/img/w/{{item['weather'][0]['icon']}}.png" alt="">
+         <h4>{{item['main']['temp']}} °C</h4><h5>{{item['weather'][0]['description']}} </h5>
+         <span class="badge badge-warning text-black">max: {{item['main']['temp_max']}} °C</span>
+         <span class="badge badge-secondary text-black">min: {{item['main']['temp_min']}} °C</span>
+    </div>
+  </div>
+</div>

@@ -42,6 +42,10 @@ import { AdminServicosComponent } from './admin/admin-servicos/admin-servicos.co
 import { CriarServicoComponent } from './admin/admin-servicos/criar-servico/criar-servico.component';
 import { EditarServicoComponent } from './admin/admin-servicos/editar-servico/editar-servico.component';
 import { SolicitarServicoComponent } from './servicos/solicitar-servico/solicitar-servico.component';
+import { WeatherForecastComponent } from './home/weather-forecast/weather-forecast.component';
+import { AdminPrevisaoTempoComponent } from './admin/admin-previsao-tempo/admin-previsao-tempo.component';
+import { WidgetNoticiasComponent } from './home/widget-noticias/widget-noticias.component';
+import { WidgetCardapioComponent } from './home/widget-cardapio/widget-cardapio.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,10 @@ import { SolicitarServicoComponent } from './servicos/solicitar-servico/solicita
     CriarServicoComponent,
     EditarServicoComponent,
     SolicitarServicoComponent,
+    WeatherForecastComponent,
+    AdminPrevisaoTempoComponent,
+    WidgetNoticiasComponent,
+    WidgetCardapioComponent,
   ],
     imports: [
       BrowserModule,
