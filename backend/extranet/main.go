@@ -89,6 +89,10 @@ func setupRouter(env controllers.Env) *gin.Engine {
 			protected.POST("/solicitarservico", env.SolicitarServico)
 			protected.POST("/servicobyname", env.GetServicoByName)
 			protected.PUT("/servicos/:name", env.UpdateServico)
+
+			// previsao do tempo
+			protected.PUT("/previsaodotempo", env.UpdatePrevisaoDoTempo)
+			protected.GET("/previsao", env.GetPrevisaoDoTempo)
 		}
 	}
 	return r

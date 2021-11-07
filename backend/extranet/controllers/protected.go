@@ -873,3 +873,45 @@ func (e *Env) GetServicoByName(c *gin.Context) {
 	c.JSON(200, servico)
 	return
 }
+
+// ************ PREVISÃO DO TEMPO ************ //
+
+func (e *Env) UpdatePrevisaoDoTempo(c *gin.Context) {
+	var previsao models.PrevisaoTempo
+	err := c.ShouldBindJSON(&previsao)
+	if err != nil || previsao.City == "" || previsao.Estate == "" {
+		c.JSON(400, gin.H{
+			"msg": "invalid json",
+		})
+		c.Abort()
+		return
+	}
+
+	_, err = e.DB.Model(&previsao).
+		Set("city = ? ", previsao.City).
+		Set("estate = ? ", previsao.Estate).
+		WherePK().
+		Update()
+	if err != nil {
+		c.JSON(401, gin.H{
+			"msg": "invalid input",
+		})
+		c.Abort()
+		return
+	}
+}
+
+func (e *Env) GetPrevisaoDoTempo(c *gin.Context) {
+	var previsao []models.PrevisaoTempo
+
+	err := e.DB.Model(&previsao).Select()
+	if err != nil {
+		c.JSON(401, gin.H{
+			"msg": "invalid input",
+		})
+		c.Abort()
+		return
+	}
+	c.JSON(200, previsao[0])
+	return
+}
