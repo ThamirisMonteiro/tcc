@@ -46,6 +46,7 @@ import { WeatherForecastComponent } from './home/weather-forecast/weather-foreca
 import { AdminPrevisaoTempoComponent } from './admin/admin-previsao-tempo/admin-previsao-tempo.component';
 import { WidgetNoticiasComponent } from './home/widget-noticias/widget-noticias.component';
 import { WidgetCardapioComponent } from './home/widget-cardapio/widget-cardapio.component';
+import { ConfirmationDialogComponent } from './shared/information-dialog/information-dialog.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { WidgetCardapioComponent } from './home/widget-cardapio/widget-cardapio.
     AdminPrevisaoTempoComponent,
     WidgetNoticiasComponent,
     WidgetCardapioComponent,
+    ConfirmationDialogComponent,
   ],
     imports: [
       BrowserModule,

@@ -8,21 +8,6 @@
   </symbol>
 </svg>
 
-<div class="p-3 pb-md-4 mx-auto text-center">
-  <h2 class="fw-normal">Administrar Usuários</h2>
-  <p class="fs-5 text-muted">Utilize as funcionalidades abaixo para gerenciar os usuários.</p>
-  <div class="center form-signin">
-    <div class="row" *ngIf="isSuccess">
-      <div class="alert alert-success" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#success"/></svg>
-        <div>
-          <p class="green-text text-darken-4">{{success}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container">
   <div class="row offset-1 flex">
     <p class="col">Total de Usuários: {{ users?.length || '0' }}</p>
@@ -56,9 +41,17 @@
       </td>
       <td>
         <div class="form-check centralizado">
-          <label class="form-check-label"> <input class="form-check-input" type="checkbox" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="!user.active ? 'text-secondary' : 'text-white'" [checked]="user.active" (click)="onCheckboxClick(i)"/></label>
+          <label class="form-check-label">
+            <input class="form-check-input"
+                   type="checkbox"
+                   data-bs-toggle="modal"
+                   data-bs-target="#exampleModal"
+                   id="activeCheckBox"
+                   [ngClass]="!user.active ? 'text-secondary' : 'text-white'"
+                   [checked]="user.active"
+                   (click)="onCheckboxClick(i)"/>
+          </label>
         </div>
-      </td>
     </tr>
     </tbody>
   </table>

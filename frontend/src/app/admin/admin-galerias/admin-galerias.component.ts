@@ -4,48 +4,38 @@ import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../../authentication/auth.service";
 import {Galeria} from "../../models/galeria.model";
 import {GaleriasService} from "./galerias.service";
+import {InformationDialogService} from "../../shared/information-dialog/information-dialog.service";
 
 @Component({
   selector: 'app-admin-galerias',
   templateUrl: './admin-galerias.component.html',
   styleUrls: ['./admin-galerias.component.css']
 })
-export class AdminGaleriasComponent implements OnInit {
-  galerias?: Galeria[]
-  galeria?: Galeria
-  success: string = ""
-  isSuccess: boolean = false;
+export class AdminGaleriasComponent {
+  galerias: Galeria[] = []
+  galeria: Galeria = new Galeria('','','','','','',false)
 
   constructor(private router: Router, private galeriaService: GaleriasService, private http: HttpClient,
-              private authService: AuthService, private _route: ActivatedRoute ) {
+              private authService: AuthService, private _route: ActivatedRoute,
+              private confirmationDialogService: InformationDialogService ) {
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
     this.galeriaService.findAll(userData._token).subscribe((data) => {
       this.galerias = data;
     })
-    if (this.router.getCurrentNavigation() != null) {
-      this.isSuccess = this.router.getCurrentNavigation()?.extras?.state?.isSuccess
-      if (this.isSuccess) {
-        this.success = "Galeria cadastrada com sucesso!"
-      }
-      setTimeout(() => {
-        this.isSuccess = false
-      }, 3000);
-    }
-  }
-
-  ngOnInit(): void {
   }
 
   onClickEditar(name: string) {
     this.router.navigate(["editar-galeria"], {state: {name: name}}).then()
   }
 
-  onCheckboxClick(index: number) {
-    // @ts-ignore
-    this.galeria = this.galerias[index]
-    const userData = JSON.parse(<string>localStorage.getItem('userData'))
-    this.galeria.active = !this.galeria.active
-
-    this.galeriaService.update(this.galeria, userData._token).subscribe()
-  }
+  onCheckboxClick(i: number) {
+    this.galeria = this.galerias[i]
+    let palavra: String
+    (this.galeria.active) ? palavra = "inativada" : palavra = "ativada"
+    this.confirmationDialogService.confirm('Sucesso', 'Galeria ' + palavra + ' com sucesso!')
+      .then(() => {
+        const userData = JSON.parse(<string>localStorage.getItem('userData'))
+        this.galeria.active = !this.galeria.active
+        this.galeriaService.update(this.galeria, userData._token).subscribe(() => {
+        })})}
 }

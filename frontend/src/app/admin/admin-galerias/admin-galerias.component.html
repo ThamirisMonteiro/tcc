@@ -46,7 +46,16 @@
       </td>
       <td>
         <div class="form-check centralizado">
-          <label class="form-check-label"> <input class="form-check-input" type="checkbox" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="!galeria.active ? 'text-secondary' : 'text-white'" [checked]="galeria.active" (click)="onCheckboxClick(i)"/></label>
+          <label class="form-check-label">
+            <input class="form-check-input"
+                   type="checkbox"
+                   data-bs-toggle="modal"
+                   data-bs-target="#exampleModal"
+                   id="activeCheckBox"
+                   [ngClass]="!galeria.active ? 'text-secondary' : 'text-white'"
+                   [checked]="galeria.active"
+                   (click)="onCheckboxClick(i)"/>
+          </label>
         </div>
       </td>
     </tr>
