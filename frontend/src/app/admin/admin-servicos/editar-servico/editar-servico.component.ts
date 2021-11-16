@@ -11,7 +11,6 @@ import {Servico} from "../../../models/servico.model";
 })
 export class EditarServicoComponent implements OnInit {
   isLoading = false
-  error: string = ""
   servico: Servico = new Servico('', '', '', '', '', false)
   name: string
   msg = "";

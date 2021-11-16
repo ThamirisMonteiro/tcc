@@ -3,7 +3,18 @@ import { Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {User} from "../../../models/user.model";
 import {UsuariosService} from "../usuarios.service";
-import {AuthService} from "../../../authentication/auth.service";
+import {JobsService} from "../../../shared/jobs.service";
+import {SectorsService} from "../../../shared/sectors.service";
+
+interface Job {
+  id: String,
+  name: String
+}
+
+interface Sector {
+  id: String,
+  name: String
+}
 
 @Component({
   selector: 'app-editar-usuario',
@@ -12,18 +23,39 @@ import {AuthService} from "../../../authentication/auth.service";
 })
 export class EditarUsuarioComponent implements OnInit {
   isLoading = false
-  error: string = ""
-  user?: User
-  email: string
+  user: User = new User('','','','','',false,'','','','','','','')
+  id: string
+  jobs: Job[] = []
+  sectors: Sector[] = []
+  genders: String[] = ["Feminino", "Masculino", "Outro"]
 
-  constructor(private router: Router, private userService: UsuariosService, private authService: AuthService) {
-    this.email = this.router.getCurrentNavigation()?.extras?.state?.email
-    if (this.email == undefined) {
-      this.router.navigate(["admin-usuarios"])
+  constructor(private router: Router, private userService: UsuariosService, private jobsService: JobsService,
+              private sectorsService: SectorsService) {
+    this.id = this.router.getCurrentNavigation()?.extras?.state?.id
+    if (this.id == undefined) {
+      this.router.navigate(["admin-usuarios"]).then()
     }
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
-    this.userService.findUserByEmail(userData._token, this.email).subscribe((data: User | undefined) => {
+    this.userService.findUserByID(userData._token, this.id).subscribe((data: any) => {
       this.user = data;
+      this.jobsService.findAll(userData._token).subscribe((data: any) => {
+        for (const [i, job] of data.entries()) {
+          if (job.name == this.user.job_title) {
+            data.splice(i, 1);
+          }
+        }
+        this.jobs = data;
+      })
+      this.sectorsService.findAll(userData._token).subscribe((data: any) => {
+        for (const [i, sector] of data.entries()) {
+          if (sector.name == this.user.sector) {
+            data.splice(i, 1);
+          }
+        }
+        this.sectors = data;
+      })
+      let index = this.genders.indexOf(this.user.gender)
+      this.genders.splice(index, 1)
     })
   }
 

@@ -3,6 +3,19 @@ import {NgForm} from "@angular/forms";
 import {AuthService} from "../../../authentication/auth.service";
 import {Router} from "@angular/router";
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {JobsService} from "../../../shared/jobs.service";
+import {SectorsService} from "../../../shared/sectors.service";
+
+interface Job {
+  id: String,
+    name: String
+}
+
+interface Sector {
+  id: String,
+  name: String
+}
+
 
 @Component({
   selector: 'app-criar-usuario',
@@ -13,8 +26,19 @@ export class CriarUsuarioComponent implements OnInit {
   isLoading = false
   error: string = ""
   model: NgbDateStruct | undefined;
+  jobs: Job[] = []
+  sectors: Sector[] = []
+  genders: String[] = ["Feminino", "Masculino", "Outro"]
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private jobsService: JobsService, private sectorsService: SectorsService) {
+    const userData = JSON.parse(<string>localStorage.getItem('userData'))
+    this.jobsService.findAll(userData._token).subscribe((data: any) => {
+      this.jobs = data;
+    })
+    this.sectorsService.findAll(userData._token).subscribe((data: any) => {
+      this.sectors = data;
+    })
+  }
 
   ngOnInit(): void {
   }

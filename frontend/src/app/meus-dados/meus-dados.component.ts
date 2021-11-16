@@ -17,7 +17,7 @@ export class MeusDadosComponent implements OnInit {
 
   constructor(private router: Router, private userService: UsuariosService, private authService: AuthService) {
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
-    this.userService.findUserByEmail(userData._token, userData.email).subscribe((data: User | undefined) => {
+    this.userService.findUserByID(userData._token, userData.id).subscribe((data: any) => {
       this.user = data;
     })
   }

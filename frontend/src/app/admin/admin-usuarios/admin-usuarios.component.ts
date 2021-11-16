@@ -15,10 +15,13 @@ export class AdminUsuariosComponent {
   users: User[] = []
   user: User = new User('','','','','',false,'','','','','','','',)
 
-  constructor(private confirmationDialogService: InformationDialogService, private router: Router, private userService: UsuariosService, private http: HttpClient, private authService: AuthService, private _route: ActivatedRoute ) {
+  constructor(private confirmationDialogService: InformationDialogService, private router: Router,
+              private userService: UsuariosService, private http: HttpClient, private authService: AuthService,
+              private _route: ActivatedRoute ) {
     const userData = JSON.parse(<string>localStorage.getItem('userData'))
     this.userService.findAll(userData._token).subscribe((data) => {
       this.users = data;
+      console.log(this.users)
     })
     }
 
@@ -32,7 +35,8 @@ export class AdminUsuariosComponent {
       this.userService.update(this.user, userData._token).subscribe(() => {
       })})}
 
-  onClickEditar(email: string) {
-    this.router.navigate(["editar-usuario"], {state: {email: email}})
+  onClickEditar(id: string) {
+    console.log(id)
+    this.router.navigate(["editar-usuario"], {state: {id: id}})
   }
 }

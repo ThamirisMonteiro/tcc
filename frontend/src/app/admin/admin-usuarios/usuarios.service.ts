@@ -6,11 +6,11 @@ import {Observable, Subscription} from "rxjs";
 @Injectable({providedIn: 'root'})
 export class UsuariosService {
   private usersUrl: string;
-  private userByEmailURL: string;
+  private userByIDURL: string;
 
   constructor(private http: HttpClient) {
     this.usersUrl = "http://localhost:8080/api/protected/users";
-    this.userByEmailURL = "http://localhost:8080/api/protected/userbyemail";
+    this.userByIDURL = "http://localhost:8080/api/protected/userbyid";
   }
 
   public findAll(token: String): Observable<User[]> {
@@ -27,10 +27,10 @@ export class UsuariosService {
     return this.http.put(this.usersUrl + "/" + user?.email, user, httpOptions)
   }
 
-  findUserByEmail(token: String, email: String) {
+  findUserByID(token: String, id: String) {
     const httpOptions = {
       headers: new HttpHeaders().set("Authorization", "Bearer " + token)
     };
-    return this.http.post<User>(this.userByEmailURL, email, httpOptions);
+    return this.http.get(this.userByIDURL + "/" + id, httpOptions);
   }
 }

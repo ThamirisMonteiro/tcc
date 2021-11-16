@@ -42,9 +42,8 @@
           <label for="sobrenome">Sobrenome</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="setor" name="sector">
-            <option>TI</option>
-            <option>Marketing</option>
+          <select class="form-select" id="setor" name="sector">
+              <option *ngFor="let sector of sectors">{{sector.name}}</option>
           </select>
           <label for="setor">Setor</label>
         </div>
@@ -66,9 +65,8 @@
           <label for="data_de_admissao">Data de Admissão</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="gênero" name="gênero">
-            <option>Feminino</option>
-            <option>Masculino</option>
+          <select class="form-select" id="gênero" name="gênero">
+            <option *ngFor="let gender of genders">{{gender}}</option>
           </select>
           <label for="gênero">Gênero</label>
         </div>
@@ -77,9 +75,8 @@
           <label for="cpf">CPF</label>
         </div>
         <div class="form-group form-floating">
-          <select class="form-control" id="cargo" name="job_title">
-            <option>Admin</option>
-            <option>Engenheiro/a/e de Software</option>
+          <select class="form-select" id="cargo" name="job_title">
+            <option *ngFor="let job of jobs">{{job.name}}</option>
           </select>
           <label for="cargo">Cargo</label>
         </div>

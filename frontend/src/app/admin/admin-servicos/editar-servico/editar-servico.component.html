@@ -15,16 +15,6 @@
 </div>
 <div class="text-center" id="container" *ngIf="!isLoading">
   <main class="form-signin">
-    <div class="center form-signin">
-      <div class="row" *ngIf="error">
-        <div class="alert alert-danger d-flex align-items-center" role="alert">
-          <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#danger"/></svg>
-          <div>
-            <p class="red-text text-darken-4">{{error}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
     <form #editServicoForm="ngForm" (ngSubmit)="onSubmit(editServicoForm)" *ngIf="!isLoading">
       <h3 class="h3 mb-3 fw-normal">Editar Serviço</h3>
       <h5 class="mb-3 fw-normal">Altere os campos abaixo.</h5>
