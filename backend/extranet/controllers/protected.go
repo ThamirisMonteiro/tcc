@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"errors"
 	"extranet/core"
 	"extranet/core/id"
 	"extranet/models"
@@ -11,14 +12,11 @@ import (
 	"strings"
 )
 
-// ************ USUÁRIOS ************ //
-
-func (e *Env) GetUserByEmail(c *gin.Context) {
-	var user models.User
-	email, _ := c.Get("email")
-	err := e.DB.Model(&user).
-		Where("email = ?", email.(string)).
-		First()
+func (e *Env) GetUserByID(c *gin.Context) {
+	givenID := id.ID(c.Param("id"))
+	var users []models.User
+	var returnUser models.ReturnUser
+	err := e.DB.Model(&users).Select()
 	if err != nil {
 		c.JSON(404, gin.H{
 			"msg": "user not found",
@@ -26,8 +24,45 @@ func (e *Env) GetUserByEmail(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	user.Password = ""
-	c.JSON(200, user)
+	for _, user := range users {
+		if user.ID == givenID {
+			user.Password = ""
+			job, err := e.GetCargoByID(user.JobTitleID)
+			if err != nil {
+				c.JSON(401, gin.H{
+					"msg": "invalid input",
+				})
+				c.Abort()
+				return
+			}
+			sector, err := e.GetSetorByID(user.SectorID)
+			if err != nil {
+				c.JSON(401, gin.H{
+					"msg": "invalid input",
+				})
+				c.Abort()
+				return
+			}
+			returnUser.JobTitle = job
+			returnUser.Gender = user.Gender
+			returnUser.CPF = user.CPF
+			returnUser.Role = user.Role
+			returnUser.AdmissionDate = user.AdmissionDate
+			returnUser.DateOfBirth = user.DateOfBirth
+			returnUser.Surname = user.Surname
+			returnUser.Name = user.Name
+			returnUser.Sector = sector
+			returnUser.Email = user.Email
+			returnUser.ID = user.ID
+			returnUser.Active = user.Active
+			c.JSON(200, returnUser)
+			return
+		}
+	}
+	c.JSON(404, gin.H{
+		"msg": "user not found",
+	})
+	c.Abort()
 	return
 }
 
@@ -103,9 +138,9 @@ func (e *Env) UpdateUser(c *gin.Context) {
 		Set("active = ? ", payload.Active).
 		Set("name = ? ", payload.Name).
 		Set("surname = ? ", payload.Surname).
-		Set("sector = ? ", payload.Sector).
+		Set("sector_id = ? ", payload.SectorID).
 		Set("gender = ? ", payload.Gender).
-		Set("job_title = ? ", payload.JobTitle).
+		Set("job_title_id = ? ", payload.JobTitleID).
 		Update()
 	if err != nil {
 		c.JSON(401, gin.H{
@@ -129,20 +164,35 @@ func (e *Env) GetAllUsers(c *gin.Context) {
 	var givenUsers []models.ReturnUser
 	var givenUser models.ReturnUser
 	for _, user := range users {
+		job, err := e.GetCargoByID(user.JobTitleID)
+		if err != nil {
+			c.JSON(401, gin.H{
+				"msg": "invalid input",
+			})
+			c.Abort()
+			return
+		}
+		setor, err := e.GetSetorByID(user.SectorID)
+		if err != nil {
+			c.JSON(401, gin.H{
+				"msg": "invalid input",
+			})
+			c.Abort()
+			return
+		}
+		givenUser.JobTitle = job
 		givenUser.Gender = user.Gender
 		givenUser.Surname = user.Surname
 		givenUser.Name = user.Name
-		givenUser.Sector = user.Sector
+		givenUser.Sector = setor
 		givenUser.Email = user.Email
-		givenUser.JobTitle = user.JobTitle
 		givenUser.Active = user.Active
+		givenUser.ID = user.ID
 		givenUsers = append(givenUsers, givenUser)
 	}
 	c.JSON(200, givenUsers)
 	return
 }
-
-// ************ NOTÍCIAS ************ //
 
 func (e *Env) CreateNoticiaRecord(givenNoticia models.Noticia) error {
 	_, err := e.DB.Model(&givenNoticia).Insert()
@@ -271,8 +321,6 @@ func (e *Env) GetNoticiaByAddress(c *gin.Context) {
 	return
 }
 
-// ************ GALERIAS ************ //
-
 func (e *Env) GetAllGalerias(c *gin.Context) {
 	var galerias []models.Galeria
 	err := e.DB.Model(&galerias).Select()
@@ -398,8 +446,6 @@ func (e *Env) GetGaleriaByName(c *gin.Context) {
 	return
 }
 
-// ************ FOTOS ************ //
-
 func (e *Env) UploadFoto(c *gin.Context) {
 	var foto models.Foto
 	err := c.ShouldBindJSON(&foto)
@@ -505,8 +551,6 @@ func (e *Env) InativarFotos(c *gin.Context) {
 		}
 	}
 }
-
-// ************ CARDÁPIOS ************ //
 
 func (e *Env) GetAllCardapios(c *gin.Context) {
 	var cardapios []models.Cardapio
@@ -639,8 +683,6 @@ func (e *Env) GetCardapioByName(c *gin.Context) {
 	c.JSON(200, cardapio)
 	return
 }
-
-// ************ SERVIÇOS ************ //
 
 func (e *Env) GetAllServicos(c *gin.Context) {
 	var servicos []models.Servico
@@ -874,8 +916,6 @@ func (e *Env) GetServicoByName(c *gin.Context) {
 	return
 }
 
-// ************ PREVISÃO DO TEMPO ************ //
-
 func (e *Env) UpdatePrevisaoDoTempo(c *gin.Context) {
 	var previsao models.PrevisaoTempo
 	err := c.ShouldBindJSON(&previsao)
@@ -913,5 +953,61 @@ func (e *Env) GetPrevisaoDoTempo(c *gin.Context) {
 		return
 	}
 	c.JSON(200, previsao[0])
+	return
+}
+
+func (e *Env) GetCargoByID(givenID id.ID) (string, error) {
+	var cargos []models.Cargo
+	err := e.DB.Model(&cargos).Select()
+	if err != nil {
+		return "", errors.New("unable to find cargo")
+	}
+	for _, cargo := range cargos {
+		if cargo.ID == givenID {
+			return cargo.Name, nil
+		}
+	}
+	return "", errors.New("unable to find cargo")
+}
+
+func (e *Env) GetAllCargos(c *gin.Context) {
+	var cargos []models.Cargo
+	err := e.DB.Model(&cargos).Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "cargos not found",
+		})
+		c.Abort()
+		return
+	}
+	c.JSON(200, cargos)
+	return
+}
+
+func (e *Env) GetSetorByID(givenID id.ID) (string, error) {
+	var setores []models.Setor
+	err := e.DB.Model(&setores).Select()
+	if err != nil {
+		return "", errors.New("unable to find setor")
+	}
+	for _, setor := range setores {
+		if setor.ID == givenID {
+			return setor.Name, nil
+		}
+	}
+	return "", errors.New("unable to find setor")
+}
+
+func (e *Env) GetAllSetores(c *gin.Context) {
+	var setores []models.Setor
+	err := e.DB.Model(&setores).Select()
+	if err != nil {
+		c.JSON(404, gin.H{
+			"msg": "setores not found",
+		})
+		c.Abort()
+		return
+	}
+	c.JSON(200, setores)
 	return
 }

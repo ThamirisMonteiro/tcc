@@ -2,13 +2,13 @@ package models
 
 import "extranet/core/id"
 
-type Cargo struct {
-	tableName struct{} `pg:"extranet.cargos"`
+type Setor struct {
+	tableName struct{} `pg:"extranet.setores"`
 	ID        id.ID    `json:"id"`
 	Name      string   `json:"name"`
 }
 
-type ReturnCargo struct {
-	ID   id.ID  `json:"job_title_id"`
+type ReturnSetor struct {
+	ID   id.ID  `json:"setor_id"`
 	Name string `json:"name"`
 }

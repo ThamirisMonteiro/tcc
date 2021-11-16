@@ -54,7 +54,7 @@ func setupRouter(env controllers.Env) *gin.Engine {
 		protected := api.Group("/protected").Use(middlewares.Authz())
 		{
 			// users
-			protected.POST("/userbyemail", env.GetUserByEmail)
+			protected.GET("/userbyid/:id", env.GetUserByID)
 			protected.POST("/changepassword", env.ChangePassword)
 			protected.PUT("/users/:email", env.UpdateUser)
 			protected.GET("/users", env.GetAllUsers)
@@ -93,6 +93,12 @@ func setupRouter(env controllers.Env) *gin.Engine {
 			// previsao do tempo
 			protected.PUT("/previsaodotempo", env.UpdatePrevisaoDoTempo)
 			protected.GET("/previsao", env.GetPrevisaoDoTempo)
+
+			// cargos
+			protected.GET("/cargos", env.GetAllCargos)
+
+			// setores
+			protected.GET("/setores", env.GetAllSetores)
 		}
 	}
 	return r

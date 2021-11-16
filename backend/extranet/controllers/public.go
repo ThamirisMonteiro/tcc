@@ -44,12 +44,12 @@ func (e *Env) Signup(c *gin.Context) {
 		user.Email == "" ||
 		user.Name == "" ||
 		user.Surname == "" ||
-		user.Sector == "" ||
+		user.SectorID == "" ||
 		user.DateOfBirth == "" ||
 		user.AdmissionDate == "" ||
 		user.Gender == "" ||
 		user.CPF == "" ||
-		user.JobTitle == "" {
+		user.JobTitleID == "" {
 		log.Println(err)
 		log.Println(user)
 		c.JSON(400, gin.H{

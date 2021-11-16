@@ -5,15 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efb31c1a-e301-4ce5-9363-ed4b9191ccca" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/previsao_tempo.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/home/weather-forecast/weather.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/models/previsao-do-tempo.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/cargo.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/setor.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/shared/jobs.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../frontend/src/app/shared/sectors.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/entities/entities.dat_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/storage_v2/_src_/database/postgres.edMnLQ/schema/extranet.jdsolA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/36c38280-1f13-4fb2-b6c1-9f1a863ed542/storage_v2/_src_/database/postgres.edMnLQ/schema/extranet.jdsolA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/protected.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/protected.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/public.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/public.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/usuario.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuario.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-servicos/editar-servico/editar-servico.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/admin-usuarios.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/admin-usuarios.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/admin-usuarios.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/admin-usuarios.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/criar-usuario/criar-usuario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/criar-usuario/criar-usuario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/criar-usuario/criar-usuario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/criar-usuario/criar-usuario.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/editar-usuario/editar-usuario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/editar-usuario/editar-usuario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/editar-usuario/editar-usuario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/editar-usuario/editar-usuario.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/usuarios.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/admin/admin-usuarios/usuarios.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/meus-dados/meus-dados.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/meus-dados/meus-dados.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/src/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/src/app/models/user.model.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +82,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
